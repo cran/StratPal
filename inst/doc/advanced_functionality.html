@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Advanced Functionality and Writing Extensions</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Advanced Functionality and Writing
+Extensions</h1>
+
+
+
+<p>Here we go through how the presented workflows can be generalized and
+expanded upon.</p>
+<div id="different-forward-models" class="section level2">
+<h2>Different forward models</h2>
+<p>In the examples, we used age-depth models from a carbonate platform
+simulated with CarboCAT lite (<a href="#References">Burgess 2013</a>, <a href="#References">Burgess 2023</a>). This can easily be expanded to any
+other sedimentary forward model (be it marine or terrestrial,
+siliciclastic, mixed, or carbonate system).</p>
+<p>For this, age-depth information needs to be extracted from the
+forward model. The vectors of elapsed model time vs. accumulated height
+can then be handed over to <code>tp_to_adm</code> to define age-depth
+model objects. These can then be used in the pipelines as in the
+examples.</p>
+<p>If the forward model included erosion, you need to first account for
+time intervals where sediment is first deposited and later removed. For
+this, first define a sediment accumulation curve using
+<code>admtools::tp_to_sac</code>, and pass it to
+<code>admtools::sac_to_adm</code> to turn it into an age-depth model.
+You can then use the resulting age-depth model for your analysis
+pipeline.</p>
+</div>
+<div id="empirical-age-depth-models" class="section level2">
+<h2>Empirical age-depth models</h2>
+<p>Of course you can use empirical age-depth models in your pipeline.
+You can create them from tie points using <code>tp_to_adm</code> just as
+in the case with forward models.</p>
+<p>The workflow in <code>StratPal</code> does not work with
+<code>multiadm</code> objects as defined by <code>admtools</code>. These
+objects store multiple age-depth models to account for uncertainty. You
+can however reduce their complexity, e.g. via
+<code>admtools::median_adm</code>, and use the resulting age-depth
+model.</p>
+</div>
+<div id="other-ecological-gradients-and-niche-definitions" class="section level2">
+<h2>Other ecological gradients and niche definitions</h2>
+<p>In the examples we used water depth as ecological gradient. The
+approach for niche modeling used in <code>StratPal</code> works for all
+types of niches and gradient. Potentially relevant gradients that can be
+extracted from forward models are for example substrate consistency,
+temperature, or water energy.</p>
+<p>We used a simple niche definition based on a probability density
+function of a normal distribution implemented in <code>snd_niche</code>.
+This can be expanded to arbitrary niche definitions along a gradient.
+For integration with <code>apply_niche</code>, niche definitions must
+meet the following criteria:</p>
+<ol style="list-style-type: decimal">
+<li>They are functions that take gradient values as input and return
+numbers between 0 and 1 as outputs.</li>
+<li>They are vectorized, meaning when handed a vector, they return a
+vector of equal length.</li>
+</ol>
+<p>Similar criteria hold for the definitions of gradient change
+<code>gc</code>:</p>
+<ol style="list-style-type: decimal">
+<li><code>gc</code> must be a function that takes time (or position) as
+input, and returns gradient values as outputs.</li>
+<li>The function must be vectorized, meaning when handed a vector, it
+must return a vector of equal length.</li>
+</ol>
+<p>As long as these conditions for <code>gc</code> and
+<code>niche_def</code> are met, arbitrary niche preferences along any
+gradient can be modeled using <code>apply_niche</code>.</p>
+</div>
+<div id="different-models-of-phenotypic-evolution" class="section level2">
+<h2>Different models of phenotypic evolution</h2>
+<p>Other types of phenotypic evolution in the time domain can easily be
+incorporated. For seamless integration, they need to meet the following
+criteria:</p>
+<ul>
+<li><p>They take a vector of times as first argument</p></li>
+<li><p>The implementation is for a continuous time version of the mode
+of interest, as the time domain is generally sampled at irregular times
+(see methods section in <a href="#References">Hohmann et al. (2024)</a>
+for details). More specifically, the implementation must be able to deal
+with heterodistant sampling in time.</p></li>
+<li><p>They return a list with two elements: One named <code>t</code>
+that is a duplicate of the first argument handed to the function. The
+second one should be named <code>y</code> and contain the simulated
+trait values.</p></li>
+<li><p>The output list <code>l</code> should be assigned both the class
+“list” and “timelist” via the command
+<code>class(l) = c(&quot;timelist&quot;, &quot;list&quot;)</code> , see the source code of
+<code>random_walk</code> for an example.</p></li>
+</ul>
+<p>The last two points make sure plotting via
+<code>admtools::plot.timelist</code> and
+<code>admtools::plot.stratlist</code> works seamlessly.</p>
+</div>
+<div id="different-models-of-event-type-data" class="section level2">
+<h2>Different models of event type data</h2>
+<p>We used (constant and variable rate) Poisson point processes to
+simulate event type data. Any model of event-type data can be used
+(e.g., one with temporal correlation), as long as it returns a vector
+with the timing/position of the events.</p>
+</div>
+<div id="transforming-data-from-the-stratigraphic-domain-to-the-time-domain" class="section level2">
+<h2>Transforming data from the stratigraphic domain to the time
+domain</h2>
+<p>Much of the explanations here focus on forward modeling, i.e.,
+modeling the time domain and examining how it is expressed in the
+stratigraphic domain. The reverse direction (from the stratigraphic
+domain to the time domain) can be modeled using
+<code>strat_to_time</code>.</p>
+</div>
+<div id="taphonomy-for-event-type-data" class="section level2">
+<h2>Taphonomy for event type data</h2>
+<p>Taphonomic effects can be incorporated using using the
+<code>apply_taphonomy</code> function. This is based on the same
+principle as niche modeling, and makes use of the <code>thin</code>
+function, but was not shown in the examples. For
+<code>pres_potential</code> (resp. <code>ctc</code>), the same logical
+constraints apply as to <code>niche_def</code> (resp.
+<code>gc</code>).</p>
+</div>
+<div id="transform-different-types-of-data" class="section level2">
+<h2>Transform different types of data</h2>
+<p><code>strat_to_time</code> and <code>time_to_strat</code> are generic
+functions of the <code>admtools</code> package that can transform
+different types of data. Currently they transform phylogenetic trees
+(<code>phylo</code> objects), lists (<code>list</code> class), and
+numeric data such as the event type data (class
+<code>numeric</code>).</p>
+<p>In general, any type of temporal (resp. stratigraphic) data can be
+transformed. For this, you need define a <code>S3</code> class for the
+object you would like to transform (if it does not already have a S3
+class), and then implement the transformation of this class for
+<code>time_to_strat</code> and <code>strat_to_time</code>.</p>
+<p>If you would like to add transformations for new S3 classes to the
+<code>admtools</code> package, please see the contribution guidelines
+(CONTRIBUTING.md file) of the <code>admtools</code> package for details
+on how to contribute code.</p>
+</div>
+<div id="References" class="section level2">
+<h2>References</h2>
+<ul>
+<li><p>Burgess, Peter. 2013. “CarboCAT: A cellular automata model of
+heterogeneous carbonate strata.” Computers &amp; Geosciences. <a href="https://doi.org/10.1016/j.cageo.2011.08.026" class="uri">https://doi.org/10.1016/j.cageo.2011.08.026</a>.</p></li>
+<li><p>Burgess, Peter. 2023. “CarboCATLite v1.0.1.” Zenodo. <a href="https://doi.org/10.5281/zenodo.8402578" class="uri">https://doi.org/10.5281/zenodo.8402578</a></p></li>
+<li><p>Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska,
+Emilia. 2024. “Identification of the mode of evolution in incomplete
+carbonate successions.” BMC Ecology and Evolution, In Press. <a href="https://doi.org/10.1101/2023.12.18.572098" class="uri">https://doi.org/10.1101/2023.12.18.572098</a>.</p></li>
+</ul>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
