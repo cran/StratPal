@@ -4,15 +4,19 @@ ornstein_uhlenbeck = function(t, mu = 0, theta = 1, sigma = 1, y0 = 0){
   #' @title simulate ornstein-uhlenbeck (OU) process
   #'
   #' @param t times at which the process is simulated. Can be heterodistant
-  #' @param mu scalar, long term mean
-  #' @param theta scalar, mean reversion speed
-  #' @param sigma positive scalar, strength of randomness
-  #' @param y0 scalar, initial value (value of process at the first entry of t)
+  #' @param mu number, long term mean
+  #' @param theta number, mean reversion speed
+  #' @param sigma positive number, strength of randomness
+  #' @param y0 number, initial value (value of process at the first entry of t)
   #'
   #' @description
     #' Simulates an Ornstein-Uhlenbeck process using the Euler-Maruyama method. The process is simulated on a scale of `0.25 * min(diff(t))` and then interpolated to the values of `t`.
     #'
   #' @returns A list with two elements: `t` and `y`. `t` is a duplicate of the input `t`, `y` are the values of the OU process at these times. Output list is of S3 class `timelist` (inherits from `list`) and can thus be plotted directly using `plot`, see `?admtools::plot.timelist`
+  #'
+  #' @seealso
+    #' * [ornstein_uhlenbeck_sl()] for simulation on specimen level - for use in conjunction with `paleoTS` package
+    #' * [random_walk()] and [stasis()] to simulate other modes of evolution
   #'
   #' @examples
     #'
@@ -25,7 +29,20 @@ ornstein_uhlenbeck = function(t, mu = 0, theta = 1, sigma = 1, y0 = 0){
     #'
     #'
 
+  if (length(t) < 2){
+    stop("need at least 2 entries in \"t\"")
+  }
+  if (sigma < 0){
+    stop("paramter \"sigma\" must be positive or 0")
+  }
+  if (theta < 0){
+    stop("paramter \"sigma\" must be positive or 0")
+  }
+
   if (y0 == "stationary"){
+    if (theta ==0){
+      stop("parameter \"theta\" must be positive in stationary case")
+    }
     y0 = stats::rnorm(1, mean = mu, sd = sigma / sqrt(2 * theta))
   }
 

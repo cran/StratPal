@@ -1,3 +1,15 @@
+# StratPal 0.2.0
+
+* introduce S3 class `pre_paleoTS` with simulation procedures for trait evolution on specimen level
+
+* add `reduce_to_paleoTS` to reduce `pre_paleoTS` to `paleoTS` format for linking with`paleoTS` package
+
+* add niche modeling and taphonomic effects for `pre_paleoTS` via dispatch of `apply_niche` and `apply_taphonomy`
+
+* add more tests
+
+* add input checks
+
 # StratPal 0.1.1
 
 * add citation and DOI

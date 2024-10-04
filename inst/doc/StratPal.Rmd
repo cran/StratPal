@@ -1,8 +1,8 @@
 ---
-title: "Intoduction to the StratPal package"
+title: "Introduction to the StratPal package"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Intoduction to the StratPal package}
+  %\VignetteIndexEntry{Introduction to the StratPal package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -29,15 +29,27 @@ Throughout the vignettes there are several **tasks** that you can solve. They ar
 
 ## Installation {#installation}
 
-To install the `StratPal` package, first install the `remotes` package by running
+### CRAN
 
-``` r
+To install the `StratPal` package from [CRAN](https://cran.r-project.org/), run
+
+```{r, eval=FALSE}
+install.packages("StratPal")
+```
+
+in the R console.
+
+### GitHub
+
+To install the `StratPal` package from GitHub, first install the `remotes` package by running
+
+```{r, eval=FALSE}
 install.packages("remotes")
 ```
 
 in the R console. Then, run
 
-``` r
+```{r, eval=FALSE}
 remotes::install_github(repo = "MindTheGap-ERC/StratPal",
                         build_vignettes = TRUE,
                         ref = "HEAD",
@@ -48,7 +60,7 @@ to install the latest stable version of the package and all its dependencies.
 
 ## Dependencies {#dependencies}
 
-The `StratPal` heavily relies on the age-depth modelling tools provided by the `admtools` package, which is *automatically* installed when you install `StratPal`.
+The `StratPal` heavily relies on the age-depth modeling tools provided by the `admtools` package, which is *automatically* installed when you install `StratPal`.
 
 To use its functionality, you need to run
 
@@ -66,8 +78,7 @@ or by visiting the package website at <https://mindthegap-erc.github.io/admtools
 
 ## Example data {#example-data}
 
-`StratPal` comes with synthetic example data, which contains model parameters and outputs of a carbonate platform simulated using CarboCAT Lite ([Burgess (2013)](#References), [Burgess (2023)](#References)). 
-The data is stored in the variable `scenarioA`, which is automatically available when the package is loaded. The structure of the data is described under `?scenarioA`.
+`StratPal` comes with synthetic example data, which contains model parameters and outputs of a carbonate platform simulated using CarboCAT Lite ([Burgess (2013)](#References), [Burgess (2023)](#References)). The data is stored in the variable `scenarioA`, which is automatically available when the package is loaded. The structure of the data is described under `?scenarioA`.
 
 The data is taken from scenario A in [Hohmann et al. (2023)](#References), the modeling procedure is described in detail in [Hohmann et al. 2024](#References), see therein for a chronostratigraphic diagram and a transect through the carbonate platform.
 
@@ -75,7 +86,7 @@ The data contains information on the eustatic sea level curve used for the model
 
 As an example, here is the eustatic sea level curve used for the model run:
 
-```{r}
+```{r, fig.alt="Plot of a sinusoidal sea level curve."}
 plot(x = scenarioA$t_myr,
      y = scenarioA$sl_m,
      type = "l",
@@ -83,7 +94,6 @@ plot(x = scenarioA$t_myr,
      ylab = "Eustatic sea level [m]",
      main = "Sea level curve used as model input")
 ```
-
 
 ## Piping {#piping}
 
@@ -95,7 +105,7 @@ This functionality is available from R version 4.2 on.
 
 Consider the following code for simulating and plotting a random walk using the `random_walk` function:
 
-```{r}
+```{r, fig.alt="plot of a random walk"}
 set.seed(42)             # set seed for computational reproducibility
 t = seq(0, 1, by = 0.01) # times where we evaluate the random walk
 l = random_walk(t)       # simulate the random walk
@@ -104,7 +114,7 @@ plot(l, type = "l")      # line plot of the results
 
 This code does the job, but it has some flaws: We introduced a lot of intermediate variables, which makes it hard to trace the logic of what we are trying to achieve: plotting a random walk. Using the pipe operator `|>` we can clarify the logic and simplify the code:
 
-```{r}
+```{r, fig.alt="plot of a random walk, identical to the one above"}
 set.seed(42)            # set seed for computational reproducibility
 seq(0, 1, by = 0.01) |> # define times of simulation  
   random_walk() |>      # simulate random walk
@@ -165,7 +175,7 @@ The nice thing about constructing age-depth models this way is that there is ple
 
 Now you can plot the age-depth model using the basic `plot` command:
 
-```{r}
+```{r, fig.alt = "plot of an  age-depth model, showing how the time and depth domain are connected"}
 # plot age-depth model, see ?plot.adm for details
 plot(adm,
      lwd_acc = 2,   # plot thicker lines for intervals with sediment accumulation (lwd = line width)
@@ -188,7 +198,7 @@ summary(adm) # some summary statistics
 
 We can now use the pipe operator to do some first analysis of the age-depth model
 
-```{r}
+```{r, fig.alt="histogram of hiatus durations 2 km offshore in scenario A"}
 
 # plot histogram of hiatus durations
 adm |>    
@@ -202,7 +212,7 @@ You can see that there are a 8 shorter hiatuses (below 100 kyr) and 2 long hiatu
 
 Given a stratigraphic position, an age-depth model can tell us how old that positions is. Conversely, if we know the timing of an event, an age-depth model can tell us at what stratigraphic position that event will occur. This can be used to transform all types of data from the time domain to the stratigraphic domain and vice versa.
 
-In `admtools`, the transformation of data is done by the functions `time_to_strat` (for transforming temporal data into stratigraphic data) and `strat_to_time` (for transforming stratigrahic data into temporal data). Details on how this is done and what types of data can be transformed can be found in the [vignette of the `admtools` package](https://mindthegap-erc.github.io/admtools/articles/admtools.html), for applications to stratigraphic paleobiology see the vignettes linked below under ["Getting started"](#getting-started).
+In `admtools`, the transformation of data is done by the functions `time_to_strat` (for transforming temporal data into stratigraphic data) and `strat_to_time` (for transforming stratigraphic data into temporal data). Details on how this is done and what types of data can be transformed can be found in the [vignette of the `admtools` package](https://mindthegap-erc.github.io/admtools/articles/admtools.html), for applications to stratigraphic paleobiology see the vignettes linked below under ["Getting started"](#getting-started).
 
 ## Getting started {#getting-started}
 
@@ -222,6 +232,12 @@ vignette("event_data")
 
 for details on how to model stratigraphic paleobiology of event data such as individual fossils and first/last occurrences of taxa, or explore the vignette online under [mindthegap-erc.github.io/StratPal/articles/event_data](https://mindthegap-erc.github.io/StratPal/articles/event_data.html).
 
+If you want to explore how to link the `StratPal` package with the `paleoTS` package go to
+
+```{r, eval=FALSE}
+vignette("paleoTS_funcionality")
+```
+
 See also
 
 ```{r, eval=FALSE}
@@ -230,12 +246,18 @@ vignette("advanced_functionality")
 
 for details on how to expand on the modeling pipelines described here, or explore the vignette online under [mindthegap-erc.github.io/StratPal/articles/advanced_functionality](https://mindthegap-erc.github.io/StratPal/articles/advanced_functionality.html).
 
+For details on the defined data structures, see
+
+```{r, eval=FALSE}
+vignette("StratPal_docs")
+```
+
 ## References {#References}
 
 -   Burgess, Peter. 2013. "CarboCAT: A cellular automata model of heterogeneous carbonate strata." Computers & Geosciences. <https://doi.org/10.1016/j.cageo.2011.08.026>.
 
 -   Burgess, Peter. 2023. "CarboCATLite v1.0.1." Zenodo. <https://doi.org/10.5281/zenodo.8402578>
 
--   Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions." BMC Ecology and Evolution, In Press. <https://doi.org/10.1101/2023.12.18.572098>.
+-   Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2024. "Identification of the mode of evolution in incomplete carbonate successions." BMC Ecology and Evolution 24, 113. <https://doi.org/10.1186/s12862-024-02287-2>.
 
 -   Hohmann, Niklas, Koelewijn, Joël R.; Burgess, Peter; Jarochowska, Emilia. 2023. "Identification of the Mode of Evolution in Incomplete Carbonate Successions - Supporting Data." Open Science Framework. <https://doi.org/10.17605/OSF.IO/ZBPWA>, published under the [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.

@@ -344,24 +344,26 @@ stratigraphic domain. The reverse direction (from the stratigraphic
 domain to the time domain) can be modeled using
 <code>strat_to_time</code>.</p>
 </div>
-<div id="taphonomy-for-event-type-data" class="section level2">
-<h2>Taphonomy for event type data</h2>
+<div id="taphonomy" class="section level2">
+<h2>Taphonomy</h2>
 <p>Taphonomic effects can be incorporated using using the
 <code>apply_taphonomy</code> function. This is based on the same
 principle as niche modeling, and makes use of the <code>thin</code>
 function, but was not shown in the examples. For
 <code>pres_potential</code> (resp. <code>ctc</code>), the same logical
-constraints apply as to <code>niche_def</code> (resp.
-<code>gc</code>).</p>
+constraints apply as to <code>niche_def</code> (resp. <code>gc</code>).
+This works for event-type data and <code>pre_paleoTS</code> objects (see
+<code>vignette(&quot;paleoTS_functionality&quot;)</code> for details).</p>
 </div>
 <div id="transform-different-types-of-data" class="section level2">
 <h2>Transform different types of data</h2>
 <p><code>strat_to_time</code> and <code>time_to_strat</code> are generic
 functions of the <code>admtools</code> package that can transform
-different types of data. Currently they transform phylogenetic trees
-(<code>phylo</code> objects), lists (<code>list</code> class), and
-numeric data such as the event type data (class
-<code>numeric</code>).</p>
+different types of data. Currently they transform paleontological time
+series of individual specimens (<code>pre_paleoTS</code> objects),
+phylogenetic trees (<code>phylo</code> objects), lists
+(<code>list</code> class), and numeric data such as the event type data
+(class <code>numeric</code>).</p>
 <p>In general, any type of temporal (resp. stratigraphic) data can be
 transformed. For this, you need define a <code>S3</code> class for the
 object you would like to transform (if it does not already have a S3
@@ -380,7 +382,7 @@ heterogeneous carbonate strata.” Computers &amp; Geosciences. <a href="https:/
 <li><p>Burgess, Peter. 2023. “CarboCATLite v1.0.1.” Zenodo. <a href="https://doi.org/10.5281/zenodo.8402578" class="uri">https://doi.org/10.5281/zenodo.8402578</a></p></li>
 <li><p>Hohmann, Niklas; Koelewijn, Joël R.; Burgess, Peter; Jarochowska,
 Emilia. 2024. “Identification of the mode of evolution in incomplete
-carbonate successions.” BMC Ecology and Evolution, In Press. <a href="https://doi.org/10.1101/2023.12.18.572098" class="uri">https://doi.org/10.1101/2023.12.18.572098</a>.</p></li>
+carbonate successions.” BMC Ecology and Evolution 24, 113. <a href="https://doi.org/10.1186/s12862-024-02287-2" class="uri">https://doi.org/10.1186/s12862-024-02287-2</a>.</p></li>
 </ul>
 </div>
 

@@ -9,12 +9,24 @@ library(StratPal)
 library(admtools)
 
 ## ----eval=FALSE---------------------------------------------------------------
+#  install.packages("StratPal")
+
+## ----eval=FALSE---------------------------------------------------------------
+#  install.packages("remotes")
+
+## ----eval=FALSE---------------------------------------------------------------
+#  remotes::install_github(repo = "MindTheGap-ERC/StratPal",
+#                          build_vignettes = TRUE,
+#                          ref = "HEAD",
+#                          dependencies = TRUE)
+
+## ----eval=FALSE---------------------------------------------------------------
 #  library(admtools)
 
 ## ----eval=FALSE---------------------------------------------------------------
 #  browseVignettes(package = "admtools")
 
-## -----------------------------------------------------------------------------
+## ----fig.alt="Plot of a sinusoidal sea level curve."--------------------------
 plot(x = scenarioA$t_myr,
      y = scenarioA$sl_m,
      type = "l",
@@ -22,13 +34,13 @@ plot(x = scenarioA$t_myr,
      ylab = "Eustatic sea level [m]",
      main = "Sea level curve used as model input")
 
-## -----------------------------------------------------------------------------
+## ----fig.alt="plot of a random walk"------------------------------------------
 set.seed(42)             # set seed for computational reproducibility
 t = seq(0, 1, by = 0.01) # times where we evaluate the random walk
 l = random_walk(t)       # simulate the random walk
 plot(l, type = "l")      # line plot of the results
 
-## -----------------------------------------------------------------------------
+## ----fig.alt="plot of a random walk, identical to the one above"--------------
 set.seed(42)            # set seed for computational reproducibility
 seq(0, 1, by = 0.01) |> # define times of simulation  
   random_walk() |>      # simulate random walk
@@ -56,7 +68,7 @@ adm = tp_to_adm(t = t,          # tie points in time
                 T_unit = "Myr", # add time unit 
                 L_unit = "m")   # add length unit
 
-## -----------------------------------------------------------------------------
+## ----fig.alt = "plot of an  age-depth model, showing how the time and depth domain are connected"----
 # plot age-depth model, see ?plot.adm for details
 plot(adm,
      lwd_acc = 2,   # plot thicker lines for intervals with sediment accumulation (lwd = line width)
@@ -71,7 +83,7 @@ get_total_thickness(adm) # sediment accumulated
 get_completeness(adm) # stratigraphic completeness
 summary(adm) # some summary statistics
 
-## -----------------------------------------------------------------------------
+## ----fig.alt="histogram of hiatus durations 2 km offshore in scenario A"------
 
 # plot histogram of hiatus durations
 adm |>    
@@ -85,5 +97,11 @@ adm |>
 #  vignette("event_data")
 
 ## ----eval=FALSE---------------------------------------------------------------
+#  vignette("paleoTS_funcionality")
+
+## ----eval=FALSE---------------------------------------------------------------
 #  vignette("advanced_functionality")
+
+## ----eval=FALSE---------------------------------------------------------------
+#  vignette("StratPal_docs")
 
