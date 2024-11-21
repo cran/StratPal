@@ -23,7 +23,7 @@ adm = tp_to_adm(t = scenarioA$t_myr,               # define age-depth model
                 T_unit = "Myr")    
 set.seed(42)                                      # set seed for reproducibility
 seq(min_time(adm), max_time(adm), by = 0.01) |>   # sample every 0.01 Myr
-  random_walk_sl(n_per_sample = 10) |>            # simulate random walk on specimen level
+  random_walk_sl(n_per_sample = 5) |>            # simulate random walk on specimen level
   time_to_strat(adm) |>                           # transform into stratigraphic domain
   reduce_to_paleoTS() |>                          # transform into paleoTS format
   plot()                                          # plot
@@ -31,7 +31,7 @@ seq(min_time(adm), max_time(adm), by = 0.01) |>   # sample every 0.01 Myr
 ## -----------------------------------------------------------------------------
 set.seed(42)                                      # set seed for reproducibility
 seq(min_time(adm), max_time(adm), by = 0.01) |>   # sample every 0.01 Myr
-  random_walk_sl(n_per_sample = 10) |>            # simulate random walk on specimen level
+  random_walk_sl(n_per_sample = 5) |>            # simulate random walk on specimen level
   time_to_strat(adm) |>                           # transform into stratigraphic domain
   reduce_to_paleoTS() |>                          # transform into paleoTS format
   fit3models()                                    # fit 3 models to time series
