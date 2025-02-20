@@ -12,7 +12,7 @@
 
 
 
-<title>Usage with the paleoTS package</title>
+<title>Usage with the paleoTS and evoTS package</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -336,19 +336,20 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 
 
-<h1 class="title toc-ignore">Usage with the paleoTS package</h1>
+<h1 class="title toc-ignore">Usage with the paleoTS and evoTS
+package</h1>
 
 
 
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(StratPal)</span></code></pre></div>
 <p>This vignette explain how to link the <code>StratPal</code> package
-with the <code>paleoTS</code> package (<a href="#References">Hunt
-2006</a>). For details on the underlying data structures, see
+with the <code>paleoTS</code> and <code>evoTS</code> packages (<a href="#References">Hunt 2006, Voje 2023</a>). For details on the
+underlying data structures, see
 <code>vignette(&quot;StratPal_docs&quot;)</code>.</p>
 <div id="quick-summary" class="section level2">
 <h2>Quick summary</h2>
-<p>To combine the <code>StratPal</code> and the <code>paleoTS</code>
-packages,</p>
+<p>To combine the <code>StratPal</code> and the
+<code>paleoTS</code>/<code>evoTS</code> packages,</p>
 <ol style="list-style-type: decimal">
 <li>simulate trait evolution using the functions with suffix
 <code>_sl</code> (specimen level), optionally specifying the additional
@@ -358,8 +359,12 @@ parameters for intrapopulation variance and number of specimens</li>
 <li>turn the result into <code>paleoTS</code> format using
 <code>reduce_to_paleoTS</code></li>
 <li>further analyze or plot the results using the <code>paleoTS</code>
-package</li>
+or <code>evoTS</code> package</li>
 </ol>
+<p>Note that simulation of multivariate phenotypic evolution as provided
+by the <code>evoTS</code> package is not yet implemented on specimen
+level. If you are interested in this functionality please contact the
+developer.</p>
 </div>
 <div id="motivation" class="section level2">
 <h2>Motivation</h2>
@@ -378,7 +383,7 @@ specimen level. Stratigraphic, taphonomic, and ecological effects can
 act on this format. After all these effects have been applied, we can
 reduce this data format into the standard <code>paleoTS</code> format,
 and then analyze it with the standard toolbox of the
-<code>paloeTS</code> package.</p>
+<code>paloeTS</code>/<code>evoTS</code> packages.</p>
 </div>
 <div id="modeling-trait-evolution-on-specimen-level-complexity-reduction-and-plotting" class="section level2">
 <h2>Modeling trait evolution on specimen level, complexity reduction,
@@ -451,8 +456,10 @@ evolution from the simulated data:</p>
 <div id="References" class="section level2">
 <h2>References</h2>
 <ul>
-<li>Hunt, Gene. 2006. “Fitting and Comparing Models of Phyletic
-Evolution: Random Walks and Beyond.” Paleobiology. <a href="https://doi.org/10.1666/05070.1" class="uri">https://doi.org/10.1666/05070.1</a>.</li>
+<li><p>Hunt, Gene. 2006. “Fitting and Comparing Models of Phyletic
+Evolution: Random Walks and Beyond.” Paleobiology. <a href="https://doi.org/10.1666/05070.1" class="uri">https://doi.org/10.1666/05070.1</a>.</p></li>
+<li><p>Voje, Kjetil L. 2023. “Fitting and Evaluating Univariate and
+Multivariate Models of Within-Lineage Evolution.” Paleobiology. <a href="https://doi.org/10.1017/pab.2023.10" class="uri">https://doi.org/10.1017/pab.2023.10</a>.</p></li>
 </ul>
 </div>
 
