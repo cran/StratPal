@@ -301,7 +301,10 @@ must return a vector of equal length.</li>
 </ol>
 <p>As long as these conditions for <code>gc</code> and
 <code>niche_def</code> are met, arbitrary niche preferences along any
-gradient can be modeled using <code>apply_niche</code>.</p>
+gradient can be modeled using <code>apply_niche</code>. For examples on
+how this works for discrete categories of niches, see the functions
+<code>discrete_niche</code> (and examples therein) and
+<code>discrete_gradient</code> for the needed helper functions.</p>
 </div>
 <div id="different-models-of-phenotypic-evolution" class="section level2">
 <h2>Different models of phenotypic evolution</h2>
@@ -353,7 +356,10 @@ function, but was not shown in the examples. For
 <code>pres_potential</code> (resp. <code>ctc</code>), the same logical
 constraints apply as to <code>niche_def</code> (resp. <code>gc</code>).
 This works for event-type data and <code>pre_paleoTS</code> objects (see
-<code>vignette(&quot;paleoTS_functionality&quot;)</code> for details).</p>
+<code>vignette(&quot;paleoTS_functionality&quot;)</code> for details). For
+examples with discrete taphonomic categories see
+<code>discrete_niche</code> (both source code and examples) as a
+template.</p>
 </div>
 <div id="transform-different-types-of-data" class="section level2">
 <h2>Transform different types of data</h2>

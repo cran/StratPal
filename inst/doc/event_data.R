@@ -80,7 +80,7 @@ p3(rate = 200, from = min_time(adm_2km), to = max_time(adm_2km)) |> # constant r
 
 ## ----fig.alt="stratigraphic expression of last occurrences 12 km from shore."----
 p3(rate = 200, from = min_time(adm_12km), to = max_time(adm_12km)) |>
-  time_to_strat(adm_12km, destructive = TRUE) |>
+  time_to_strat(adm_12km, destructive = FALSE) |>
   hist(xlab = "Stratigraphic height [m]",
        main = "Last occurrences 12 km offshore",
        ylab = "# Last occurrences",
