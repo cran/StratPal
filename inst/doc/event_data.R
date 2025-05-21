@@ -165,9 +165,9 @@ list("t" = t, "y" = wd) |>    # create list with time - water depth information
        main = "Water depth in section 2 km from shore")
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  vignette("phenotypic_evolution")
-#  vignette("paleoTS_functionality")
+# vignette("phenotypic_evolution")
+# vignette("paleoTS_functionality")
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  vignette("advanced_functionality")
+# vignette("advanced_functionality")
 

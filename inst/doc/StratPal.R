@@ -9,22 +9,22 @@ library(StratPal)
 library(admtools)
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  install.packages("StratPal")
+# install.packages("StratPal")
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  install.packages("remotes")
+# install.packages("remotes")
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  remotes::install_github(repo = "MindTheGap-ERC/StratPal",
-#                          build_vignettes = TRUE,
-#                          ref = "HEAD",
-#                          dependencies = TRUE)
+# remotes::install_github(repo = "MindTheGap-ERC/StratPal",
+#                         build_vignettes = TRUE,
+#                         ref = "HEAD",
+#                         dependencies = TRUE)
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  library(admtools)
+# library(admtools)
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  browseVignettes(package = "admtools")
+# browseVignettes(package = "admtools")
 
 ## ----fig.alt="Plot of a sinusoidal sea level curve."--------------------------
 plot(x = scenarioA$t_myr,
@@ -52,7 +52,7 @@ seq(0, 1, by = 0.1) |>
   quantile(x = runif(100), p = _) # pass left hand side to the p argument
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  browseVignettes(package = "admtools")
+# browseVignettes(package = "admtools")
 
 ## -----------------------------------------------------------------------------
 library("admtools")
@@ -91,17 +91,20 @@ adm |>
   hist( xlab = paste("Hiatus duration", "[", get_T_unit(adm),"]"))
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  vignette("phenotypic_evolution")
+# vignette("phenotypic_evolution")
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  vignette("event_data")
+# vignette("event_data")
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  vignette("paleoTS_funcionality")
+# vignette("paleoTS_funcionality")
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  vignette("advanced_functionality")
+# vignette("FossilSim_integration")
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  vignette("StratPal_docs")
+# vignette("advanced_functionality")
+
+## ----eval=FALSE---------------------------------------------------------------
+# vignette("StratPal_docs")
 

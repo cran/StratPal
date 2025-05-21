@@ -5,7 +5,7 @@ knitr::opts_chunk$set(
 )
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  vignette("paleoTS_functionality")
+# vignette("paleoTS_functionality")
 
 ## ----setup--------------------------------------------------------------------
 library(StratPal)
@@ -81,11 +81,11 @@ sampling_loc_m |>                                  # sampling locations
        main = "Trait evolution 2 km from shore")
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  vignette("paleoTS_functionality")
+# vignette("paleoTS_functionality")
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  vignette("event_data")
+# vignette("event_data")
 
 ## ----eval=FALSE---------------------------------------------------------------
-#  vignette("advanced_functionality")
+# vignette("advanced_functionality")
 
