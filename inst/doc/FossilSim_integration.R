@@ -94,7 +94,7 @@ FossilSim:::plot.fossils(f_strat,
 axis(1)
 mtext(1, text = "Stratigraphic position [m]", line = 2)
 
-## -----------------------------------------------------------------------------
+## ----fig.alt="Tree with fossils affected by ecological and stratigraphic effects."----
 ## transform tree, fossils, and taxonomy into stratigraphyc domain
 # using the age-depth model
 tree_strat = time_to_strat(tree, adm_12km) # no transformation of time to age required

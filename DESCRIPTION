@@ -1,6 +1,6 @@
 Package: StratPal
 Title: Stratigraphic Paleobiology Modeling Pipelines
-Version: 0.5.0
+Version: 0.6.0
 Authors@R: 
     person("Niklas", "Hohmann", , "N.H.Hohmann@uu.nl", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-1559-1838"))
@@ -10,7 +10,7 @@ Description: The fossil record is a joint expression of ecological, taphonomic,
     (e.g., trait evolution, fossil abundance, phylogenetic trees), and examine how their expression
     in the rock record (stratigraphic domain) is influenced based on 
     age-depth models, ecological niche models, and taphonomic effects.
-    Functions simulating common processes used in modeling trait evolution or 
+    Functions simulating common processes used in modeling trait evolution, biostratigraphy or 
     event type data such as first/last occurrences are provided and can be used 
     standalone or as part of a pipeline. The package comes with example 
     data sets and tutorials in several vignettes, which can be used as a 
@@ -30,9 +30,9 @@ BugReports: https://github.com/MindTheGap-ERC/StratPal/issues
 Config/testthat/edition: 3
 Language: en-US
 NeedsCompilation: no
-Packaged: 2025-05-21 08:19:43 UTC; hohma004
+Packaged: 2025-08-27 10:08:21 UTC; hohma004
 Author: Niklas Hohmann [aut, cre] (ORCID:
     <https://orcid.org/0000-0003-1559-1838>)
 Maintainer: Niklas Hohmann <N.H.Hohmann@uu.nl>
 Repository: CRAN
-Date/Publication: 2025-05-21 08:40:02 UTC
+Date/Publication: 2025-08-27 10:50:02 UTC
