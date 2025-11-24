@@ -1,6 +1,6 @@
 Package: StratPal
 Title: Stratigraphic Paleobiology Modeling Pipelines
-Version: 0.6.0
+Version: 0.7.0
 Authors@R: 
     person("Niklas", "Hohmann", , "N.H.Hohmann@uu.nl", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-1559-1838"))
@@ -30,9 +30,9 @@ BugReports: https://github.com/MindTheGap-ERC/StratPal/issues
 Config/testthat/edition: 3
 Language: en-US
 NeedsCompilation: no
-Packaged: 2025-08-27 10:08:21 UTC; hohma004
+Packaged: 2025-11-24 13:53:53 UTC; Hohma004
 Author: Niklas Hohmann [aut, cre] (ORCID:
     <https://orcid.org/0000-0003-1559-1838>)
 Maintainer: Niklas Hohmann <N.H.Hohmann@uu.nl>
 Repository: CRAN
-Date/Publication: 2025-08-27 10:50:02 UTC
+Date/Publication: 2025-11-24 14:10:02 UTC
