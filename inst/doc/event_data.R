@@ -55,7 +55,7 @@ L_axis_lab()
 title("Age-depth model 12 km from shore")
 
 ## ----fig.alt="stratigraphic expression of fossil occurrences 2 km from shore."----
-p3(rate = 200, from = min_time(adm_2km), to = max_time(adm_2km)) |> # constant rate in time domain
+p3(rate = 2000, from = min_time(adm_2km), to = max_time(adm_2km)) |> # constant rate in time domain
   time_to_strat(adm_2km, destructive = TRUE) |>                     # transform into depth domain
   hist(xlab = "Stratigraphic height [m]",                           # plot
        main = "Fossil abundance 2 km offshore",

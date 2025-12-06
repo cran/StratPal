@@ -1,6 +1,6 @@
 Package: StratPal
 Title: Stratigraphic Paleobiology Modeling Pipelines
-Version: 0.7.0
+Version: 0.7.1
 Authors@R: 
     person("Niklas", "Hohmann", , "N.H.Hohmann@uu.nl", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-1559-1838"))
@@ -17,7 +17,7 @@ Description: The fossil record is a joint expression of ecological, taphonomic,
     template to set up one's own simulation.
 License: Apache License (>= 2)
 Encoding: UTF-8
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Imports: admtools (>= 0.6.0), paleoTS
 Suggests: ape, FossilSim, knitr, rmarkdown, spelling, testthat (>=
         3.0.0)
@@ -30,9 +30,9 @@ BugReports: https://github.com/MindTheGap-ERC/StratPal/issues
 Config/testthat/edition: 3
 Language: en-US
 NeedsCompilation: no
-Packaged: 2025-11-24 13:53:53 UTC; Hohma004
+Packaged: 2025-12-05 10:02:20 UTC; Hohma004
 Author: Niklas Hohmann [aut, cre] (ORCID:
     <https://orcid.org/0000-0003-1559-1838>)
 Maintainer: Niklas Hohmann <N.H.Hohmann@uu.nl>
 Repository: CRAN
-Date/Publication: 2025-11-24 14:10:02 UTC
+Date/Publication: 2025-12-06 11:20:02 UTC

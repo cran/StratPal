@@ -298,6 +298,39 @@ format using <code>reduce_to_paleoTS</code></p>
 <code>plot</code> after loading the <code>paleoTS</code> package.</p>
 </div>
 </div>
+<div id="s3-class-char_mat" class="section level2">
+<h2>S3 class <code>char_mat</code></h2>
+<p>Describes a character matrix associated with positional information
+(time/height) for application of taphonomic and stratigraphic
+effects.</p>
+<div id="structure-1" class="section level3">
+<h3>Structure</h3>
+<p>List with two elements:</p>
+<ul>
+<li><code>mat</code>: The matrix, with taxon names as column names</li>
+<li><code>pos</code>: named vector containing positional information
+(time or height) for the taxa</li>
+</ul>
+</div>
+<div id="construction-1" class="section level3">
+<h3>Construction</h3>
+<p><code>char_mat</code> is constructed using
+<code>as_char_mat</code>.</p>
+</div>
+<div id="modification-1" class="section level3">
+<h3>Modification</h3>
+<p>Modified by <code>apply_taphonomy</code>. For logical reasons,
+<code>apply_niche.char_mat</code> throws an error.</p>
+</div>
+<div id="transformation-into-other-s3-classes-1" class="section level3">
+<h3>Transformation into other S3 classes</h3>
+<p>None</p>
+</div>
+<div id="plotting-1" class="section level3">
+<h3>Plotting</h3>
+<p>None</p>
+</div>
+</div>
 
 
 
